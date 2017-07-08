@@ -7,7 +7,7 @@ class Statuses(models.Model):
     name = models.CharField(max_length=12)
     description = models.CharField(max_length=255)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -16,7 +16,7 @@ class Location(models.Model):
     name = models.CharField(max_length=30)
     location = PlacesField()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
 
@@ -29,5 +29,5 @@ class Object(models.Model):
     capacity = models.IntegerField()
     remaining = models.IntegerField(null=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
