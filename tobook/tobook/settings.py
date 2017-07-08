@@ -31,12 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'material.theme.cyan',
+    'material',
     'places',
     'object2book',
 ]
@@ -125,3 +128,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 PLACES_MAPS_API_KEY=' AIzaSyBS0FqY7IvJhy53VRhc_GuEyjuCkVWhGgc'
+MAP_WIDGET_HEIGHT=480
+MAP_OPTIONS={}
+MARKER_OPTIONS={}

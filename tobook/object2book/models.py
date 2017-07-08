@@ -14,7 +14,8 @@ class Statuses(models.Model):
 class Location(models.Model):
     """(Object Location)"""
     name = models.CharField(max_length=30)
-    location = PlacesField()
+    description = models.CharField(max_length=255)
+    location = PlacesField(blank=True)
 
     def __str__(self):
         return self.name
@@ -25,7 +26,8 @@ class Object(models.Model):
     name = models.CharField(max_length=50)
     code = models.CharField(max_length=10)
     description = models.CharField(max_length=255)
-    status = models.ForeignKey(Statuses,blank=False,default='s')
+    location = models.ForeignKey(Location)
+    status = models.ForeignKey(Statuses)
     capacity = models.IntegerField()
     remaining = models.IntegerField(null=True)
 

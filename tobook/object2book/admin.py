@@ -6,7 +6,7 @@ from object2book.models import(
 )
 # Register your models here.
 class ObjectAdmin(admin.ModelAdmin):
-    list_display = ('name','code','status','capacity','remaining')
+    list_display = ('name','code','location','status','capacity','remaining')
 
 admin.site.register(Statuses)
 
