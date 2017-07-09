@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'material',
     'places',
     'object2book',
+    'booking',
 ]
 
 MIDDLEWARE = [
