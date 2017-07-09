@@ -1,13 +1,15 @@
 from django.contrib import admin
-from booking.models import(
-    Person,
-    Booking,
-)
+from booking.models import Person, Booking
+
 # Register your models here.
 class BookingAdmin(admin.ModelAdmin):
-    list_display = ('pnr','fullname','object',)
+    model = Booking
+    list_display = ('pnr','person','objectToBook','from_date','to_date')
 
+class PersonAdmin(admin.ModelAdmin):
+    model = Person
+    list_display = ('fullname','phonenumber','email')
 
-admin.site.register(Person)
+admin.site.register(Person, PersonAdmin)
 
-admin.site.register(Booking)
+admin.site.register(Booking, BookingAdmin)

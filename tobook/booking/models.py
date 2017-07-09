@@ -21,8 +21,13 @@ class Person(models.Model):
 
 
 class Booking(models.Model):
+    """Random code generator function"""
+    def pnr():
+        pnr_code = get_random_string(length=6,allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+        return pnr_code
+
     """(Booking model)"""
-    pnr = get_random_string(length=6,allowed_chars='ABCDEFGHIJKLMNOPQRSTUVWXYZ')
+    pnr = models.CharField(default=pnr, max_length=6, unique=True)
     person = models.ForeignKey(Person)
     objectToBook = models.ForeignKey(Object)
     from_date = models.DateTimeField()
