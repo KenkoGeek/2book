@@ -85,7 +85,7 @@ DATABASES = {
         'NAME': 'to-book',
         'USER': 'tobook',
         'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'HOST': '172.17.0.2',
         'PORT': '',
     }
 }
