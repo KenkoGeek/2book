@@ -37,16 +37,16 @@ class Booking(models.Model):
     to_date = models.DateTimeField()
 
 
-    def notify(sender, instance, created, **kwargs):
-        """Notify to user that a new booking has been added."""
-        if created:
-            subject = 'Booking created'
-            message = 'Booking %s for %s was added booked from %s to %s' % instance.pnr, instance.objectToBook, instance.from_date, instance.to_date
-            from_addr = 'no-reply@example.com'
-            recipient_list = (Person.email())
-            send_mail(subject, message, from_addr, recipient_list)
-
-        signals.post_save.connect(notify, sender=Booking)
+    # def notify(sender, instance, created, **kwargs):
+    #     """Notify to user that a new booking has been added."""
+    #     if created:
+    #         subject = 'Booking created'
+    #         message = 'Booking %s for %s was added booked from %s to %s' % instance.pnr, instance.objectToBook, instance.from_date, instance.to_date
+    #         from_addr = 'no-reply@example.com'
+    #         recipient_list = (Person.email())
+    #         send_mail(subject, message, from_addr, recipient_list)
+    #
+    #     signals.post_save.connect(notify, sender=Booking)
 
     def __str__(self):
         return self.pnr
