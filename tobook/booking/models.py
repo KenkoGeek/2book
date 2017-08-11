@@ -22,7 +22,7 @@ class Person(models.Model):
     birthdate = models.DateField()
 
     def __str__(self):
-        return self.email
+        return '{}, {}'.format(self.fullname, self.email)
 
 
 class Booking(models.Model):
@@ -50,5 +50,5 @@ def send_booking(sender, instance, **kwargs):
     sender_email = os.environ.get('SENDER_EMAIL')
     receipt_email = os.environ.get('RECEIPT_EMAIL')
 
-    email_text = '''Booking %s created''' % (emailPnr)
+    email_text = '''Booking %s ''' % (emailPnr)
     send_mail("Booking created", email_text, sender_email, [receipt_email])
