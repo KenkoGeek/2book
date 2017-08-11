@@ -22,7 +22,7 @@ class Person(models.Model):
     birthdate = models.DateField()
 
     def __str__(self):
-        return self.fullname
+        return self.email
 
 
 class Booking(models.Model):
@@ -38,15 +38,17 @@ class Booking(models.Model):
     from_date = models.DateTimeField()
     to_date = models.DateTimeField()
 
-@receiver(post_save, sender=Booking, dispatch_uid="send_booking_info")
-def send_booking(sender, instance=Booking(), **kwargs):
+    def __str__(self):
+        return self.pnr
 
-    """Declare enviroment variables first to set this"""
+emailPnr = Booking()
+
+@receiver(post_save, sender=Booking, dispatch_uid="send_booking_info")
+def send_booking(sender, instance, **kwargs):
+
+    """Declare enviroment variables first to set this, only testing purpose"""
     sender_email = os.environ.get('SENDER_EMAIL')
     receipt_email = os.environ.get('RECEIPT_EMAIL')
 
-    email_text = '''Booking %s created''' % (Booking.pnr)
+    email_text = '''Booking %s created''' % (emailPnr)
     send_mail("Booking created", email_text, sender_email, [receipt_email])
-
-    def __str__(self):
-        return self.pnr
