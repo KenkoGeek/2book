@@ -1,10 +1,15 @@
+import os
 from django.db import models
 from django.utils.crypto import get_random_string
+from django.core.mail import send_mail
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 from object2book.models import (
     Statuses,
     Location,
     Object,
 )
+
 
 # Create your models here.
 
@@ -17,7 +22,7 @@ class Person(models.Model):
     birthdate = models.DateField()
 
     def __str__(self):
-        return self.fullname
+        return self.email
 
 
 class Booking(models.Model):
@@ -35,3 +40,15 @@ class Booking(models.Model):
 
     def __str__(self):
         return self.pnr
+
+emailPnr = Booking()
+
+@receiver(post_save, sender=Booking, dispatch_uid="send_booking_info")
+def send_booking(sender, instance, **kwargs):
+
+    """Declare enviroment variables first to set this, only testing purpose"""
+    sender_email = os.environ.get('SENDER_EMAIL')
+    receipt_email = os.environ.get('RECEIPT_EMAIL')
+
+    email_text = '''Booking %s created''' % (emailPnr)
+    send_mail("Booking created", email_text, sender_email, [receipt_email])

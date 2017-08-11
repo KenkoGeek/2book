@@ -1,5 +1,6 @@
 from django.contrib import admin
 from booking.models import Person, Booking
+from django.core.mail import send_mail
 
 # Register your models here.
 class BookingAdmin(admin.ModelAdmin):

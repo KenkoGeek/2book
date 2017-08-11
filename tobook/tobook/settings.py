@@ -85,10 +85,19 @@ DATABASES = {
         'NAME': 'to-book',
         'USER': 'tobook',
         'PASSWORD': '123456',
-        'HOST': 'localhost',
+        'HOST': '172.17.0.2',
         'PORT': '',
     }
 }
+
+# Email smtp configurations
+"""Declare enviroment variables first to set this"""
+EMAIL_HOST = os.environ.get('SMTP_HOST')
+EMAIL_PORT = os.environ.get('SMTP_PORT')
+EMAIL_HOST_USER = os.environ.get('SMTP_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('SMTP_HOST_PASSWD')
+FROM_EMAIL = os.environ.get('SMTP_FROM_ADDR')
+EMAIL_USE_TLS = True
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
@@ -128,7 +137,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-PLACES_MAPS_API_KEY=' AIzaSyBS0FqY7IvJhy53VRhc_GuEyjuCkVWhGgc'
+PLACES_MAPS_API_KEY='AIzaSyAVDsYNHfwpeiumJO30Kghw0RjMGwMObT8'
 MAP_WIDGET_HEIGHT=480
 MAP_OPTIONS={}
 MARKER_OPTIONS={}
