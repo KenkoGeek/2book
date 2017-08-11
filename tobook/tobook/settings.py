@@ -90,6 +90,15 @@ DATABASES = {
     }
 }
 
+# Email smtp configurations
+"""Declare enviroment variables first to set this"""
+EMAIL_HOST = os.environ.get('SMTP_HOST')
+EMAIL_PORT = os.environ.get('SMTP_PORT')
+EMAIL_HOST_USER = os.environ.get('SMTP_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('SMTP_HOST_PASSWD')
+FROM_EMAIL = os.environ.get('SMTP_FROM_ADDR')
+EMAIL_USE_TLS = True
+
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
 

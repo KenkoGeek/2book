@@ -1,3 +1,4 @@
+import os
 from django.db import models
 from django.utils.crypto import get_random_string
 from django.core.mail import send_mail
@@ -40,13 +41,12 @@ class Booking(models.Model):
 @receiver(post_save, sender=Booking, dispatch_uid="send_booking_info")
 def send_booking(sender, instance=Booking(), **kwargs):
 
-    """ Declare enviroment variables to set this"""
+    """Declare enviroment variables first to set this"""
     sender_email = os.environ.get('SENDER_EMAIL')
-    reciept_email = os.environ.get('RECIEPT_EMAIL')
+    receipt_email = os.environ.get('RECEIPT_EMAIL')
 
     email_text = '''Booking %s created''' % (Booking.pnr)
-    send_mail("Booking created",email_text ,
-              sender_email, [reciept_email])
+    send_mail("Booking created", email_text, sender_email, [receipt_email])
 
     def __str__(self):
         return self.pnr
