@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<h1>Local Library Home</h1>
+
+  <p>Welcome to <em>2book</em>, a very basic Django system developed as a simple auto-learning purpose</p>
+
+<h2>Dynamic content</h2>
+
+  <p>The Booking has the following record counts:</p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+  </ul>
+
+{% endblock %}
